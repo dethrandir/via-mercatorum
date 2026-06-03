@@ -1,9 +1,15 @@
-# Example Mod
+# Via Mercatorum
 
-## Setup
+A dynamic economy, logistics, and trade route simulation mod for Minecraft.
 
-For setup instructions, please see the [Fabric Documentation page](https://docs.fabricmc.net/develop/getting-started/creating-a-project#setting-up) related to the IDE that you are using.
+Trade routes generate across the world. Villages specialize in production. Caravans travel between them. Build your reputation, develop skills, and become the greatest merchant the world has ever seen.
+
+## Building
+
+```bash
+./gradlew build
+```
 
 ## License
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+MIT
