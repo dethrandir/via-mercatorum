@@ -1,0 +1,9 @@
+{
+  "quality": "gravel",
+  "speed_multiplier": 1.3,
+  "traffic_threshold": 50.0,
+  "surface": { "block": "minecraft:gravel" },
+  "foundation": { "block": "minecraft:dirt" },
+  "width": 1,
+  "next_quality": "stone"
+}

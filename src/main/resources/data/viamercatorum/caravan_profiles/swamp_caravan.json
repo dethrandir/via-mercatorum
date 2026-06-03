@@ -1,0 +1,10 @@
+{
+  "biome": "minecraft:swamp",
+  "base_villagers": 3,
+  "base_guards": 2,
+  "mounts": {
+    "minecraft:donkey": 2,
+    "minecraft:llama": 1
+  },
+  "speed_multiplier": 0.8
+}

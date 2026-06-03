@@ -1,0 +1,23 @@
+{
+  "biome": "minecraft:snowy_plains",
+  "type": "VILLAGE",
+  "population_base": 8,
+  "harvest_modifier": 0.3,
+  "specializations": [
+    { "good_id": "iron_ingot", "production_rate": 5.0, "max_capacity": 200.0, "weight": 5.0 },
+    { "good_id": "coal", "production_rate": 6.0, "max_capacity": 250.0, "weight": 4.0 },
+    { "good_id": "emerald", "production_rate": 1.0, "max_capacity": 40.0, "weight": 2.0 }
+  ],
+  "trade_goods": [
+    { "good_id": "iron_ingot", "base_price_modifier": 0.6 },
+    { "good_id": "coal", "base_price_modifier": 0.7 },
+    { "good_id": "emerald", "base_price_modifier": 0.8 },
+    { "good_id": "wheat", "base_price_modifier": 3.0, "perishable": true },
+    { "good_id": "leather", "base_price_modifier": 2.0 }
+  ],
+  "base_production": [
+    { "good_id": "stone", "production_rate": 0.5, "max_capacity": 20.0 },
+    { "good_id": "copper_ingot", "production_rate": 0.5, "max_capacity": 20.0 },
+    { "good_id": "fish", "production_rate": 1.0, "max_capacity": 40.0 }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "biome": "minecraft:desert",
+  "base_villagers": 4,
+  "base_guards": 3,
+  "mounts": {
+    "minecraft:camel": 3,
+    "minecraft:donkey": 1
+  },
+  "speed_multiplier": 1.1
+}

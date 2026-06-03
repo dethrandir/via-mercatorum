@@ -1,0 +1,27 @@
+{
+  "biome": "minecraft:plains",
+  "type": "VILLAGE",
+  "population_base": 15,
+  "harvest_modifier": 1.3,
+  "specializations": [
+    { "good_id": "wheat", "production_rate": 12.0, "max_capacity": 400.0, "weight": 5.0 },
+    { "good_id": "carrot", "production_rate": 8.0, "max_capacity": 250.0, "weight": 3.0 },
+    { "good_id": "potato", "production_rate": 8.0, "max_capacity": 250.0, "weight": 3.0 },
+    { "good_id": "bread", "production_rate": 6.0, "max_capacity": 200.0, "weight": 4.0 },
+    { "good_id": "leather", "production_rate": 2.0, "max_capacity": 100.0, "weight": 1.0 }
+  ],
+  "trade_goods": [
+    { "good_id": "wheat", "base_price_modifier": 0.6, "perishable": true },
+    { "good_id": "carrot", "base_price_modifier": 0.7, "perishable": true },
+    { "good_id": "potato", "base_price_modifier": 0.7, "perishable": true },
+    { "good_id": "bread", "base_price_modifier": 0.8, "perishable": true },
+    { "good_id": "iron_ingot", "base_price_modifier": 1.3 },
+    { "good_id": "iron_sword", "base_price_modifier": 1.4 }
+  ],
+  "base_production": [
+    { "good_id": "stone", "production_rate": 1.0, "max_capacity": 40.0 },
+    { "good_id": "oak_log", "production_rate": 2.0, "max_capacity": 60.0 },
+    { "good_id": "coal", "production_rate": 0.5, "max_capacity": 30.0 },
+    { "good_id": "iron_ingot", "production_rate": 0.3, "max_capacity": 20.0 }
+  ]
+}

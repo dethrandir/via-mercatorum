@@ -1,0 +1,8 @@
+{
+  "quality": "paved",
+  "speed_multiplier": 2.0,
+  "traffic_threshold": 300.0,
+  "surface": { "block": "minecraft:stone_bricks", "slab": "minecraft:stone_brick_slab" },
+  "foundation": { "block": "minecraft:stone" },
+  "width": 2
+}

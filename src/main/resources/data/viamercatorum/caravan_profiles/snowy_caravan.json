@@ -1,0 +1,11 @@
+{
+  "biome": "minecraft:snowy",
+  "base_villagers": 3,
+  "base_guards": 3,
+  "mounts": {
+    "minecraft:horse": 1,
+    "minecraft:llama": 2,
+    "minecraft:mule": 1
+  },
+  "speed_multiplier": 0.8
+}

@@ -1,0 +1,25 @@
+{
+  "biome": "minecraft:taiga",
+  "type": "VILLAGE",
+  "population_base": 12,
+  "harvest_modifier": 0.9,
+  "specializations": [
+    { "good_id": "spruce_log", "production_rate": 15.0, "max_capacity": 600.0, "weight": 5.0 },
+    { "good_id": "coal", "production_rate": 5.0, "max_capacity": 200.0, "weight": 3.0 },
+    { "good_id": "fish", "production_rate": 4.0, "max_capacity": 150.0, "weight": 2.0 },
+    { "good_id": "cooked_fish", "production_rate": 3.0, "max_capacity": 100.0, "weight": 2.0 }
+  ],
+  "trade_goods": [
+    { "good_id": "spruce_log", "base_price_modifier": 0.5 },
+    { "good_id": "coal", "base_price_modifier": 0.7 },
+    { "good_id": "fish", "base_price_modifier": 0.8, "perishable": true },
+    { "good_id": "cooked_fish", "base_price_modifier": 0.9, "perishable": true },
+    { "good_id": "wheat", "base_price_modifier": 1.8, "perishable": true },
+    { "good_id": "leather", "base_price_modifier": 1.5 }
+  ],
+  "base_production": [
+    { "good_id": "stone", "production_rate": 1.0, "max_capacity": 40.0 },
+    { "good_id": "iron_ingot", "production_rate": 0.5, "max_capacity": 25.0 },
+    { "good_id": "copper_ingot", "production_rate": 0.8, "max_capacity": 30.0 }
+  ]
+}

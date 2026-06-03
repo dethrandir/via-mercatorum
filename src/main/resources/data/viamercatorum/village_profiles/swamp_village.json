@@ -1,0 +1,24 @@
+{
+  "biome": "minecraft:swamp",
+  "type": "VILLAGE",
+  "population_base": 8,
+  "harvest_modifier": 0.6,
+  "specializations": [
+    { "good_id": "redstone", "production_rate": 4.0, "max_capacity": 150.0, "weight": 4.0 },
+    { "good_id": "fish", "production_rate": 4.0, "max_capacity": 120.0, "weight": 3.0 },
+    { "good_id": "gold_ingot", "production_rate": 1.0, "max_capacity": 40.0, "weight": 2.0 }
+  ],
+  "trade_goods": [
+    { "good_id": "redstone", "base_price_modifier": 0.7 },
+    { "good_id": "fish", "base_price_modifier": 0.8, "perishable": true },
+    { "good_id": "gold_ingot", "base_price_modifier": 0.9 },
+    { "good_id": "wheat", "base_price_modifier": 2.0, "perishable": true },
+    { "good_id": "iron_ingot", "base_price_modifier": 1.5 }
+  ],
+  "base_production": [
+    { "good_id": "stone", "production_rate": 0.5, "max_capacity": 20.0 },
+    { "good_id": "coal", "production_rate": 0.5, "max_capacity": 20.0 },
+    { "good_id": "oak_log", "production_rate": 2.0, "max_capacity": 60.0 },
+    { "good_id": "iron_ingot", "production_rate": 0.3, "max_capacity": 15.0 }
+  ]
+}

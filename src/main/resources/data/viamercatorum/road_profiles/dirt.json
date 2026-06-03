@@ -1,0 +1,9 @@
+{
+  "quality": "dirt",
+  "speed_multiplier": 1.0,
+  "traffic_threshold": 0.0,
+  "surface": { "block": "minecraft:grass_path" },
+  "foundation": { "block": "minecraft:dirt" },
+  "width": 1,
+  "next_quality": "gravel"
+}

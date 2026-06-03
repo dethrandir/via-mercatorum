@@ -1,0 +1,10 @@
+{
+  "biome": "minecraft:savanna",
+  "base_villagers": 4,
+  "base_guards": 2,
+  "mounts": {
+    "minecraft:horse": 2,
+    "minecraft:donkey": 1
+  },
+  "speed_multiplier": 1.0
+}

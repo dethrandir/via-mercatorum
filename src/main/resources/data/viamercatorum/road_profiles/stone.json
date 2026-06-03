@@ -1,0 +1,9 @@
+{
+  "quality": "stone",
+  "speed_multiplier": 1.6,
+  "traffic_threshold": 150.0,
+  "surface": { "block": "minecraft:cobblestone" },
+  "foundation": { "block": "minecraft:stone" },
+  "width": 2,
+  "next_quality": "paved"
+}

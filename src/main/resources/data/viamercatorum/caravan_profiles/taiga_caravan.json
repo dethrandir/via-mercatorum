@@ -1,0 +1,10 @@
+{
+  "biome": "minecraft:taiga",
+  "base_villagers": 3,
+  "base_guards": 2,
+  "mounts": {
+    "minecraft:horse": 2,
+    "minecraft:donkey": 1
+  },
+  "speed_multiplier": 0.9
+}
