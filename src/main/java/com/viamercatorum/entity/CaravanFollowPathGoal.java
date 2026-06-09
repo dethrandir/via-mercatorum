@@ -24,18 +24,24 @@ public class CaravanFollowPathGoal extends Goal {
     @Override
     public boolean canUse() {
         if (!(mob instanceof CaravanEntity caravan)) return false;
+        String cid = caravan.getCaravanId();
+        String rid = caravan.getRouteId();
+        if (cid == null || rid == null) return false;
         RouteGraph graph = ViaMercatorum.getInstance().getRouteGraph();
-        Caravan sekCaravan = graph.getCaravan(caravan.getCaravanId());
-        TradeRoute route = graph.getRoute(caravan.getRouteId());
+        Caravan sekCaravan = graph.getCaravan(cid);
+        TradeRoute route = graph.getRoute(rid);
         return sekCaravan != null && route != null && !sekCaravan.hasArrived();
     }
 
     @Override
     public void tick() {
         if (!(mob instanceof CaravanEntity caravan)) return;
+        String cid = caravan.getCaravanId();
+        String rid = caravan.getRouteId();
+        if (cid == null || rid == null) return;
         RouteGraph graph = ViaMercatorum.getInstance().getRouteGraph();
-        Caravan sekCaravan = graph.getCaravan(caravan.getCaravanId());
-        TradeRoute route = graph.getRoute(caravan.getRouteId());
+        Caravan sekCaravan = graph.getCaravan(cid);
+        TradeRoute route = graph.getRoute(rid);
         if (sekCaravan == null || route == null) return;
 
         VillageNode origin = route.getFrom();

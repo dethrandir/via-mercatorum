@@ -253,13 +253,12 @@ public class ViaMercatorum implements ModInitializer {
         });
 
         ServerChunkEvents.CHUNK_GENERATE.register((world, chunk) -> {
-            if (!chunk.getAllStarts().isEmpty()) {
-                for (var entry : chunk.getAllStarts().entrySet()) {
-                    villageDetector.onStructureStart(world, entry.getValue());
-                }
+            ChunkPos pos = chunk.getPos();
+            var structureManager = world.structureManager();
+            for (var start : structureManager.startsForStructure(pos, s -> true)) {
+                villageDetector.onStructureStart(world, start);
             }
 
-            ChunkPos pos = chunk.getPos();
             int cx = pos.getMiddleBlockX() >> 4;
             int cz = pos.getMiddleBlockZ() >> 4;
 

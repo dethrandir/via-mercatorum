@@ -11,6 +11,8 @@ import com.viamercatorum.data.VillageProfile;
 import com.viamercatorum.data.VillageProfileLoader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -26,12 +28,12 @@ public class VillageDetector {
     public void onStructureStart(ServerLevel world, StructureStart start) {
         Structure structure = start.getStructure();
 
-        String structureKeyStr = structure.type().toString();
-
-        String path = structureKeyStr;
-        if (structureKeyStr.contains("/")) {
-            path = structureKeyStr.substring(structureKeyStr.indexOf("/") + 1);
-        }
+        String path = world.registryAccess()
+            .lookupOrThrow(Registries.STRUCTURE)
+            .getResourceKey(structure)
+            .map(ResourceKey::identifier)
+            .map(Identifier::toString)
+            .orElse("");
         if (!path.contains("village")) return;
 
         int pieceCount = start.getPieces().size();
@@ -74,6 +76,8 @@ public class VillageDetector {
         graph.addVillage(node);
 
         connectNearbyVillages(node, graph);
+
+        ViaMercatorum.getInstance().getMerchantMap().discoverVillage(node);
 
         assignVillageHall(world, center, nodeId);
     }

@@ -11,12 +11,13 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.levelgen.Heightmap;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class VillageModifier {
     private final RoadGenerator roadGenerator = new RoadGenerator();
     private final RoadFeature roadFeature = new RoadFeature();
-    private final Set<String> processedRoutes = new HashSet<>();
-    private final Map<String, List<RoadGenerator.RoadSegment>> roadCache = new HashMap<>();
+    private final Set<String> processedRoutes = ConcurrentHashMap.newKeySet();
+    private final Map<String, List<RoadGenerator.RoadSegment>> roadCache = new ConcurrentHashMap<>();
 
     public void onVillageGenerated(VillageNode node, RouteGraph graph) {
         graph.addVillage(node);

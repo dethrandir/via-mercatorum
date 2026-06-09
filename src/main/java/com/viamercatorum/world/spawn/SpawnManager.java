@@ -96,9 +96,12 @@ public class SpawnManager {
 
                 if (key.equals("c_" + cx + "," + cz)) {
                     int yi = getSurfaceY(world, (int) wx, (int) wz);
+                    Entity leader = entities.iterator().next();
+                    double leaderX = leader.getX();
+                    double leaderZ = leader.getZ();
                     for (Entity e : entities) {
-                        double dx = e.getX() - (entities.iterator().next().getX());
-                        double dz = e.getZ() - (entities.iterator().next().getZ());
+                        double dx = e.getX() - leaderX;
+                        double dz = e.getZ() - leaderZ;
                         e.teleportTo(wx + dx, yi, wz + dz);
                     }
                 }
@@ -300,5 +303,16 @@ private void spawnCaravanEntities(ServerLevel world, Caravan caravan) {
 
     private int getSurfaceY(net.minecraft.world.level.Level world, int x, int z) {
         return world.getHeight(Heightmap.Types.WORLD_SURFACE, x, z);
+    }
+
+    public void onCaravanDiscarded(int chunkX, int chunkZ, net.minecraft.world.entity.Entity entity) {
+        String cKey = "c_" + chunkX + "," + chunkZ;
+        Set<Entity> entities = activeCaravanEntities.get(cKey);
+        if (entities != null) {
+            entities.remove(entity);
+            if (entities.isEmpty()) {
+                activeCaravanEntities.remove(cKey);
+            }
+        }
     }
 }

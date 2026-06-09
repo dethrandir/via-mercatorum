@@ -4,6 +4,7 @@ import com.viamercatorum.ViaMercatorum;
 import com.viamercatorum.core.world.Caravan;
 import com.viamercatorum.core.world.RouteGraph;
 import com.viamercatorum.player.MerchantScreenHandler;
+import com.viamercatorum.world.spawn.SpawnManager;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -18,6 +19,8 @@ import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 public class CaravanEntity extends Villager {
     private String caravanId;
@@ -35,6 +38,20 @@ public class CaravanEntity extends Villager {
 
     public String getCaravanId() { return caravanId; }
     public String getRouteId() { return routeId; }
+
+    @Override
+    protected void addAdditionalSaveData(ValueOutput output) {
+        super.addAdditionalSaveData(output);
+        if (caravanId != null) output.putString("CaravanId", caravanId);
+        if (routeId != null) output.putString("RouteId", routeId);
+    }
+
+    @Override
+    protected void readAdditionalSaveData(ValueInput input) {
+        super.readAdditionalSaveData(input);
+        this.caravanId = input.getString("CaravanId").orElse(null);
+        this.routeId = input.getString("RouteId").orElse(null);
+    }
 
     public static AttributeSupplier.Builder createAttributes() {
         return Villager.createAttributes();
@@ -70,6 +87,10 @@ public class CaravanEntity extends Villager {
             RouteGraph graph = ViaMercatorum.getInstance().getRouteGraph();
             Caravan caravan = graph.getCaravan(caravanId);
             if (caravan == null || caravan.hasArrived()) {
+                SpawnManager spawnManager = ViaMercatorum.getInstance().getSpawnManager();
+                int cx = (int)(blockPosition().getX() >> 4);
+                int cz = (int)(blockPosition().getZ() >> 4);
+                spawnManager.onCaravanDiscarded(cx, cz, this);
                 this.discard();
             }
         }
