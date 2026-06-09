@@ -1,0 +1,7 @@
+{
+  "items": [
+    { "item_id": "minecraft:emerald", "count": 10 },
+    { "item_id": "viamercatorum:merchant_map", "count": 1 }
+  ],
+  "welcome_message": "Via Mercatorum — ticaret yollari canlaniyor. Elinde bir tuccar haritasi var. Yola koyul!"
+}
