@@ -1,0 +1,101 @@
+{
+  "tree_id": "caravan_leader_dialog",
+  "name": "Kervanbasi Sohbeti",
+  "character_types": ["ship_captain", "captain", "caravan_leader"],
+  "starting_node_id": "greeting",
+  "nodes": [
+    {
+      "node_id": "greeting",
+      "text": "Selam yolcu! Ben bu kervanin basi. Yolda mi geldin, yoksa bize mi katilacaksin?",
+      "portrait": "caravan_leader",
+      "choices": [
+        { "index": 0, "text": "Yol hakkinda bilgi ver.", "next_node_id": "road_info" },
+        { "index": 1, "text": "Ne tasiyorsunuz?", "next_node_id": "cargo_info" },
+        { "index": 2, "text": "Dedikodu duydum mu var?", "next_node_id": "gossip" },
+        { "index": 3, "text": "Gule gule.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "road_info",
+      "text": "Yol guzergahimiz belli ama guvenlik degisir. Bazi rotalar daha tehlikeli, baziysa guvenli ama uzun.",
+      "portrait": "caravan_leader",
+      "choices": [
+        { "index": 0, "text": "Hangi rotalar tehlikeli?", "next_node_id": "danger_routes" },
+        { "index": 1, "text": "Guvenli rota oner.", "next_node_id": "safe_routes" },
+        { "index": 2, "text": "Tesekkur ederim.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "danger_routes",
+      "text": "Kuzey gecitleri haydutlarla dolu. Deniz yolu da korsan riski tasiyor. Ama ucuz ve hizli.",
+      "portrait": "caravan_leader",
+      "choices": [
+        { "index": 0, "text": "Bilgi icin tesekkurler.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "safe_routes",
+      "text": "Ana yollar genellikle guvenli ama biraz dolambacli. Muhafizlarimizi da eslik ediyor.",
+      "portrait": "caravan_leader",
+      "choices": [
+        { "index": 0, "text": "Anladim, sag ol.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "cargo_info",
+      "text": "Cesitli mallar tasiyoruz! Yiyecek, hammadde, bazen de ender esyalar. Hedefimiz komsu kasaba.",
+      "portrait": "caravan_leader",
+      "choices": [
+        { "index": 0, "text": "Ticaret yapabilir miyiz?", "next_node_id": "trade_offer" },
+        { "index": 1, "text": "Ilginç, gule gule.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "trade_offer",
+      "text": "Kervan ticareti mi? Mal меняsinde sinirliyim ama bir seyler ayarlayabiliriz belki.",
+      "portrait": "caravan_leader",
+      "choices": [
+        { "index": 0, "text": "Guzel, tiklayalim.", "next_node_id": "end", "action": "open_trade" },
+        { "index": 1, "text": "Baska zaman.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "gossip",
+      "text": "Bazi dedikodular duydum. Bati kasabasinda altin rush baslamis. Guneyde ise kitlik tehlikesi varmis.",
+      "portrait": "caravan_leader",
+      "choices": [
+        { "index": 0, "text": "Alt rush mi? Daha fazla anlat.", "next_node_id": "gold_rush" },
+        { "index": 1, "text": "Kitlik mi? Yemekte yardim edebilir miyim?", "next_node_id": "famine_help" },
+        { "index": 2, "text": "Tesekkurler, gidiyorum.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "gold_rush",
+      "text": "Evet, bati kasabasinda madencilere rastladim. Altin fiyatlar dusmus, ama hassle de buyuk. Dikkatli ol!",
+      "portrait": "caravan_leader",
+      "choices": [
+        { "index": 0, "text": "Sag ol, dikkatli olacagim.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "famine_help",
+      "text": "Guney kasabasina yiyecek goturen kervanlar az. Eger yiyecek tasiyorsan iyi fiyatla satabilirsin.",
+      "portrait": "caravan_leader",
+      "choices": [
+        { "index": 0, "text": "Dusunecegim, tesekkurler.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "end",
+      "text": "Iyi ticaretler! Yolda dikkatli ol.",
+      "portrait": "caravan_leader",
+      "choices": []
+    },
+    {
+      "node_id": "bye",
+      "text": "Yolun acik olsun! Tekrar gorusuruz.",
+      "portrait": "caravan_leader",
+      "choices": []
+    }
+  ]
+}

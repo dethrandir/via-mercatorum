@@ -1,0 +1,48 @@
+{
+  "tree_id": "raider_threat",
+  "name": "Haydut Tehdidi",
+  "character_types": ["raider_commander", "warlord"],
+  "starting_node_id": "threat",
+  "nodes": [
+    {
+      "node_id": "threat",
+      "text": "Hey! Bu benim bolgem. Ya harac odeya ya da kaybedersin!",
+      "portrait": "",
+      "choices": [
+        { "index": 0, "text": "Savasacagim!", "next_node_id": "fight", "action": "start_combat" },
+        { "index": 1, "text": "Ne kadar?", "next_node_id": "demand" },
+        { "index": 2, "text": "Gideyim, sorun cikarmak istemiyorum.", "next_node_id": "leave" }
+      ]
+    },
+    {
+      "node_id": "demand",
+      "text": "10 zumrut. Ve hic soru sorma.",
+      "portrait": "",
+      "choices": [
+        { "index": 0, "text": "Al bunu ve defol!", "next_node_id": "pay", "action": "pay_tribute" },
+        { "index": 1, "text": "Asla!", "next_node_id": "fight", "action": "start_combat" }
+      ]
+    },
+    {
+      "node_id": "fight",
+      "text": "O hunerini gorelim bakalim!",
+      "portrait": "",
+      "choices": [],
+      "action": "start_combat"
+    },
+    {
+      "node_id": "pay",
+      "text": "Bu seferlik sanslisin... Ama yine gelirim!",
+      "portrait": "",
+      "choices": [],
+      "action": "pay_tribute"
+    },
+    {
+      "node_id": "leave",
+      "text": "Akilli kisi... Bu seferlik gidebilirsin.",
+      "portrait": "",
+      "choices": [],
+      "action": ""
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "tree_id": "workshop_owner_trade",
+  "name": "Atolye Sahibi Ticaret",
+  "character_types": ["workshop_owner"],
+  "starting_node_id": "greeting",
+  "nodes": [
+    {
+      "node_id": "greeting",
+      "text": "Merhaba! Atolyemdeozel esyalar uretiyorum. Bir seye ihtiyacin var mi?",
+      "portrait": "workshop_owner",
+      "choices": [
+        { "index": 0, "text": "Neler uretiyorsun?", "next_node_id": "products" },
+        { "index": 1, "text": "Atolyeni gosterebilir misin?", "next_node_id": "tour" },
+        { "index": 2, "text": "Baska sefere.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "products",
+      "text": "Islenmis metal esya, mobilya ve bazi ozel aletlar. Kaliteyi garantili!",
+      "portrait": "workshop_owner",
+      "choices": [
+        { "index": 0, "text": "Guzel, bir seyler almak isterim.", "next_node_id": "end", "action": "open_trade" },
+        { "index": 1, "text": "Tesekkurler, gideyim.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "tour",
+      "text": "Tabii! Atolyemde 3 farkli is istasyonu var. Hammadde gelir, islenir, bitmis urun cikar.",
+      "portrait": "workshop_owner",
+      "choices": [
+        { "index": 0, "text": "Etkileyici! Bir seyler almak istiyorum.", "next_node_id": "end", "action": "open_trade" },
+        { "index": 1, "text": "Tesekkurler.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "bye",
+      "text": "Tekrar beklerim! Islerim hep var...",
+      "portrait": "workshop_owner",
+      "choices": [],
+      "action": ""
+    },
+    {
+      "node_id": "end",
+      "text": "Pazarlik her zaman yapilir!",
+      "portrait": "workshop_owner",
+      "choices": [],
+      "action": "open_trade"
+    }
+  ]
+}

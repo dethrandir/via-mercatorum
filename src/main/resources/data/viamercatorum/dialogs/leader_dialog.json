@@ -1,0 +1,87 @@
+{
+  "tree_id": "leader_dialog",
+  "name": "Lider Sohbeti",
+  "character_types": ["village_elder", "merchant_lord", "warlord", "illager_lord", "diplomat", "leader"],
+  "starting_node_id": "greeting",
+  "nodes": [
+    {
+      "node_id": "greeting",
+      "text": "Hosgeldin. Bu bolgeyi ben yonetiyorum. Ne istiyorsun?",
+      "portrait": "leader",
+      "choices": [
+        { "index": 0, "text": "Koy hakkinda bilgi ver.", "next_node_id": "village_info" },
+        { "index": 1, "text": "Bazi gorevler var mi?", "next_node_id": "quests" },
+        { "index": 2, "text": "Sefirberlik durumu hakkinda?", "next_node_id": "military" },
+        { "index": 3, "text": "Gule gule.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "village_info",
+      "text": "Halkimiz memnun, ticaret yollari guvenli. Askeri hazirligimiz ise bolgeye gore degisir.",
+      "portrait": "leader",
+      "choices": [
+        { "index": 0, "text": "Ticaret hakkinda bilgi ver.", "next_node_id": "trade_info" },
+        { "index": 1, "text": "Gorevlerin neler?", "next_node_id": "quests" },
+        { "index": 2, "text": "Tesekkur ederim.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "quests",
+      "text": "Bazi gorevlerim var. Yardimci olursan koyune buyuk katkin olur.",
+      "portrait": "leader",
+      "choices": [
+        { "index": 0, "text": "Ne gibi gorevler?", "next_node_id": "quest_list" },
+        { "index": 1, "text": "Belki baska zaman.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "quest_list",
+      "text": "Yiyecek stoklarimizi artirmamiz lazim. Ayrica yol guvenligini saglamamiz gerekiyor. Hangisiyle baslamak istersin?",
+      "portrait": "leader",
+      "choices": [
+        { "index": 0, "text": "Yiyecek gorevini alirim.", "next_node_id": "end", "action": "accept_quest_food" },
+        { "index": 1, "text": "Yol guvenligi gorevini alirim.", "next_node_id": "end", "action": "accept_quest_road" },
+        { "index": 2, "text": "Iki gorevi de alirim!", "next_node_id": "end", "action": "accept_quest_both" },
+        { "index": 3, "text": "Hicbirini almak istemiyorum.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "military",
+      "text": "Askeri durumumuzu biliyorsun mi? Gerekirse seferberlik ilan edebiliriz ama halka agir yuk biner.",
+      "portrait": "leader",
+      "choices": [
+        { "index": 0, "text": "Seferberlik talep et.", "next_node_id": "mobilize_confirm" },
+        { "index": 1, "text": "Sadece bilgi istiyordum.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "mobilize_confirm",
+      "text": "Emin misin? Seferberlik uretimizi dusurur ama savunmamizi artirir.",
+      "portrait": "leader",
+      "choices": [
+        { "index": 0, "text": "Evet, seferberlik ilan et!", "next_node_id": "end", "action": "request_mobilize" },
+        { "index": 1, "text": "Hayir, vazgectim.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "trade_info",
+      "text": "Kervan yollarimiz komsu bolgelere uzaniyor. Ticaret genellikle iyi gidiyor.",
+      "portrait": "leader",
+      "choices": [
+        { "index": 0, "text": "Tesekkurler.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "end",
+      "text": "Pekala! Gorusecegiz.",
+      "portrait": "leader",
+      "choices": []
+    },
+    {
+      "node_id": "bye",
+      "text": "Gule gule! Akilli kararlar al.",
+      "portrait": "leader",
+      "choices": []
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "tree_id": "village_elder_greeting",
+  "name": "Koy Muhtari Selamlama",
+  "character_types": ["village_elder", "guild_master", "diplomat"],
+  "starting_node_id": "greeting",
+  "nodes": [
+    {
+      "node_id": "greeting",
+      "text": "Hosgeldin, yolcu. Bu koyun nufusu ve durumu hakkinda bilgi almak ister misin?",
+      "portrait": "village_elder",
+      "choices": [
+        { "index": 0, "text": "Evet, lutfen anlat.", "next_node_id": "info" },
+        { "index": 1, "text": "Hayir, tesekkurler.", "next_node_id": "bye" }
+      ],
+      "action": ""
+    },
+    {
+      "node_id": "info",
+      "text": "Koyumuz su an dengi bir surecte. Yiyecek stokumuz yeterli ve ticaret yollarimiz guvenli. Askeri hazirligimizda eksiklerimiz var ama.",
+      "portrait": "village_elder",
+      "choices": [
+        { "index": 0, "text": "Askeri konuda yardim edebilir miyim?", "next_node_id": "military_help" },
+        { "index": 1, "text": "Ticaret hakkinda bilgi ver.", "next_node_id": "trade_info" },
+        { "index": 2, "text": "Tesekkur ederim, gidiyorum.", "next_node_id": "bye" }
+      ],
+      "action": ""
+    },
+    {
+      "node_id": "military_help",
+      "text": "Bu guzel bir teklif! Eger silah bagisi yapabilirsen koyun savunmasi guclenir. Yoksa muhafizlarimiza katilabilirsin de.",
+      "portrait": "village_elder",
+      "choices": [
+        { "index": 0, "text": "Silah bagislamak istiyorum.", "next_node_id": "end", "action": "donate_weapons" },
+        { "index": 1, "text": "Bir dusuneyim.", "next_node_id": "bye" }
+      ],
+      "action": ""
+    },
+    {
+      "node_id": "trade_info",
+      "text": "Kervan yollarimiz komsu kasabaya kadar uzaniyor. Yol guvenligi bazen sorunlu ama ticaret devam ediyor. Gida ve hammadde genelde ucuz, islenmis esya pahali.",
+      "portrait": "village_elder",
+      "choices": [
+        { "index": 0, "text": "Anladim, tesekkurler.", "next_node_id": "bye" }
+      ],
+      "action": ""
+    },
+    {
+      "node_id": "bye",
+      "text": "Gule gule! Akilli ticaretler dilerim.",
+      "portrait": "village_elder",
+      "choices": [],
+      "action": ""
+    },
+    {
+      "node_id": "end",
+      "text": "Cok sag ol! Koyun savunmasi guclenmis oldu.",
+      "portrait": "village_elder",
+      "choices": [],
+      "action": "donate_weapons"
+    }
+  ]
+}

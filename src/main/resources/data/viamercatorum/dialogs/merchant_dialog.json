@@ -1,0 +1,103 @@
+{
+  "tree_id": "merchant_dialog",
+  "name": "Tuccar Sohbeti",
+  "character_types": ["workshop_owner", "banker", "guild_master", "merchant", "smuggler"],
+  "starting_node_id": "greeting",
+  "nodes": [
+    {
+      "node_id": "greeting",
+      "text": "Merhaba! Ticaret yapmak mi istiyorsun, yoksa sadece sohbet mi?",
+      "portrait": "merchant",
+      "choices": [
+        { "index": 0, "text": "Ticaret yapmak istiyorum.", "next_node_id": "trade" },
+        { "index": 1, "text": "Atolyeni gormek istiyorum.", "next_node_id": "workshop" },
+        { "index": 2, "text": "Bolge hakkinda bilgi ver.", "next_node_id": "info" },
+        { "index": 3, "text": "Gule gule.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "trade",
+      "text": "Tabii! Mal satin almak ya da satmak istiyorsan dogru yerdesin. Kaliteme guvenebilirsin.",
+      "portrait": "merchant",
+      "choices": [
+        { "index": 0, "text": "Neler satin alabilirim?", "next_node_id": "buy_list" },
+        { "index": 1, "text": "Satmak istedigim mallar var.", "next_node_id": "sell_list" },
+        { "index": 2, "text": "Belki baska zaman.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "buy_list",
+      "text": "Islenmis esya, silah ve bazen ender mallarin elimde oluyor. Fiyatlar pazarliga bagli!",
+      "portrait": "merchant",
+      "choices": [
+        { "index": 0, "text": "Guzel, bir seyler alicam.", "next_node_id": "end", "action": "open_trade" },
+        { "index": 1, "text": "Pahali, baska seylere bakayim.", "next_node_id": "workshop" }
+      ]
+    },
+    {
+      "node_id": "sell_list",
+      "text": "Hammaddeleri kabul ederim. Maden, odun ve tarim urunleri en cok isime yarar.",
+      "portrait": "merchant",
+      "choices": [
+        { "index": 0, "text": "Anlastik, mallarimi satayim.", "next_node_id": "end", "action": "open_trade" },
+        { "index": 1, "text": "Baska zaman satarim.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "workshop",
+      "text": "Atolyemde birkac is istasyonum var. Hammadde gelir, islenir ve bitmis urun cikar.",
+      "portrait": "merchant",
+      "choices": [
+        { "index": 0, "text": "Atolyeni kullanabilir miyim?", "next_node_id": "workshop_use" },
+        { "index": 1, "text": "Ilginç, tesekkur ederim.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "workshop_use",
+      "text": "Tabii, bir ucret karsiliginda atolyemi kullanabilirsin. Ancak once stoklarimi kontrol etmem lazim.",
+      "portrait": "merchant",
+      "choices": [
+        { "index": 0, "text": "Ne kadar ucret?", "next_node_id": "workshop_price" },
+        { "index": 1, "text": "Baska zaman.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "workshop_price",
+      "text": "Atolye ucreti mal turune gore degisir. Basit esyalar icin 5 zumrut, ozel esyalar icin 20 zumrut.",
+      "portrait": "merchant",
+      "choices": [
+        { "index": 0, "text": "Anlastik.", "next_node_id": "end", "action": "open_workshop" },
+        { "index": 1, "text": "Pahali, baska zaman dusuneyim.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "info",
+      "text": "Bu bolgede ticaret yollari guvenli, ama bazen haydutlar sorun cikariyor. Fiyatlar mevsime gore degisir.",
+      "portrait": "merchant",
+      "choices": [
+        { "index": 0, "text": "Haydutlar mi? Ne tur sorunlar?", "next_node_id": "piracy_info" },
+        { "index": 1, "text": "Tesekkur ederim.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "piracy_info",
+      "text": "Yol guvenligi bazen dusuyor. Kervanlar baskinlara ugrayabiliyor. Ama senin icin guvenli yol bulabilirim.",
+      "portrait": "merchant",
+      "choices": [
+        { "index": 0, "text": "Guzel, tesekkurler.", "next_node_id": "bye" }
+      ]
+    },
+    {
+      "node_id": "end",
+      "text": "Pazarlik her zaman yapilir! Tekrar beklerim.",
+      "portrait": "merchant",
+      "choices": []
+    },
+    {
+      "node_id": "bye",
+      "text": "Gorusuruz! Isler icin her zaman buradayim.",
+      "portrait": "merchant",
+      "choices": []
+    }
+  ]
+}
