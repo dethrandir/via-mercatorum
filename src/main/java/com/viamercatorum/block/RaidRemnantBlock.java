@@ -20,16 +20,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class RaidRemnantBlock extends BaseEntityBlock {
     private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 8, 16);
 
-    public RaidRemnantBlock() {
-        super(Properties.of()
-            .strength(1.5f)
-            .noOcclusion()
-        );
+    public RaidRemnantBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
-        return simpleCodec(ignored -> new RaidRemnantBlock());
+        return simpleCodec(RaidRemnantBlock::new);
     }
 
     @Override

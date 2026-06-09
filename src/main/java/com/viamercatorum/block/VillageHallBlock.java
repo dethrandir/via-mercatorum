@@ -19,16 +19,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class VillageHallBlock extends BaseEntityBlock {
     private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 12, 16);
 
-    public VillageHallBlock() {
-        super(Properties.of()
-            .strength(2.0f)
-            .noOcclusion()
-        );
+    public VillageHallBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
-        return simpleCodec(ignored -> new VillageHallBlock());
+        return simpleCodec(VillageHallBlock::new);
     }
 
     @Override
