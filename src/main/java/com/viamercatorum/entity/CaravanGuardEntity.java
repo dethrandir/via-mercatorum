@@ -2,18 +2,21 @@ package com.viamercatorum.entity;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 import java.util.EnumSet;
 
@@ -26,6 +29,10 @@ public class CaravanGuardEntity extends Villager {
 
     public CaravanGuardEntity(EntityType<? extends CaravanGuardEntity> type, Level level) {
         super(type, level);
+    }
+
+    public static AttributeSupplier.Builder createAttributes() {
+        return Villager.createAttributes();
     }
 
     public void setVariant(GuardVariant variant) {
@@ -54,7 +61,20 @@ public class CaravanGuardEntity extends Villager {
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
     }
 
-    static class BowAttackGoal extends Goal {
+    @Override
+    protected void addAdditionalSaveData(ValueOutput output) {
+        super.addAdditionalSaveData(output);
+        output.putInt("variant", variant.ordinal());
+    }
+
+    @Override
+    protected void readAdditionalSaveData(ValueInput input) {
+        super.readAdditionalSaveData(input);
+        int v = input.getIntOr("variant", 0);
+        setVariant(v == 1 ? GuardVariant.BOW : GuardVariant.SWORD);
+    }
+
+    static class BowAttackGoal extends net.minecraft.world.entity.ai.goal.Goal {
         private final CaravanGuardEntity guard;
         private final double speed;
         private final int attackInterval;
@@ -76,7 +96,7 @@ public class CaravanGuardEntity extends Villager {
 
         @Override
         public void tick() {
-            LivingEntity target = guard.getTarget();
+            net.minecraft.world.entity.LivingEntity target = guard.getTarget();
             if (target == null) return;
 
             double dist = guard.distanceToSqr(target);
@@ -88,7 +108,7 @@ public class CaravanGuardEntity extends Villager {
                 guard.getNavigation().stop();
                 cooldown--;
                 if (cooldown <= 0) {
-                    var arrow = ProjectileUtil.getMobArrow(guard, Items.ARROW.getDefaultInstance(), 1.6f, Items.BOW.getDefaultInstance());
+                    var arrow = net.minecraft.world.entity.projectile.ProjectileUtil.getMobArrow(guard, Items.ARROW.getDefaultInstance(), 1.6f, Items.BOW.getDefaultInstance());
                     double dx = target.getX() - guard.getX();
                     double dz = target.getZ() - guard.getZ();
                     double dy = target.getY() + target.getEyeHeight() - guard.getY() - guard.getEyeHeight();

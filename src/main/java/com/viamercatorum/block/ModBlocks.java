@@ -7,10 +7,16 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 
 public class ModBlocks {
-    public static final MarketStallBlock MARKET_STALL = Registry.register(
+    public static final VillageHallBlock VILLAGE_HALL = Registry.register(
         BuiltInRegistries.BLOCK,
-        Identifier.fromNamespaceAndPath(ViaMercatorum.MOD_ID, "market_stall"),
-        new MarketStallBlock()
+        Identifier.fromNamespaceAndPath(ViaMercatorum.MOD_ID, "village_hall"),
+        new VillageHallBlock()
+    );
+
+    public static final RaidRemnantBlock RAID_REMNANT = Registry.register(
+        BuiltInRegistries.BLOCK,
+        Identifier.fromNamespaceAndPath(ViaMercatorum.MOD_ID, "raid_remnant"),
+        new RaidRemnantBlock()
     );
 
     public static void register() {

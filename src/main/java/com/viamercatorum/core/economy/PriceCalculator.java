@@ -37,4 +37,14 @@ public class PriceCalculator {
         ViaMercatorumConfig config = ViaMercatorum.getInstance().getConfig();
         return good.basePrice() * config.economy.caravanSellRate / riskPremium;
     }
+
+    public static double calculateRegionalBuyPrice(TradeGood good, MarketRegion region, double reputation) {
+        double regionalBase = region.getRegionalPrice(good.id(), good.basePrice());
+        return regionalBase * calculateReputationDiscount(reputation);
+    }
+
+    public static double calculateRegionalSellPrice(TradeGood good, MarketRegion region, double reputation) {
+        double regionalBase = region.getRegionalPrice(good.id(), good.basePrice()) * 0.7;
+        return regionalBase * (1.0 + Math.min(0.3, reputation * 0.002));
+    }
 }

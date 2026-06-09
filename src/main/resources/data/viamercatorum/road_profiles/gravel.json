@@ -5,5 +5,8 @@
   "surface": { "block": "minecraft:gravel" },
   "foundation": { "block": "minecraft:dirt" },
   "width": 1,
-  "next_quality": "stone"
+  "next_quality": "stone",
+  "degradation_rate": 0.0004,
+  "degrade_to": "dirt",
+  "maintenance_cost": 0.0015
 }

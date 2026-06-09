@@ -14,6 +14,18 @@ public class ModScreenHandlers {
         new MenuType<>(MerchantScreenHandler::new, FeatureFlags.DEFAULT_FLAGS)
     );
 
+    public static final MenuType<VillageHallScreenHandler> VILLAGE_HALL = Registry.register(
+        BuiltInRegistries.MENU,
+        Identifier.fromNamespaceAndPath(ViaMercatorum.MOD_ID, "village_hall"),
+        new MenuType<>(VillageHallScreenHandler::new, FeatureFlags.DEFAULT_FLAGS)
+    );
+
+    public static final MenuType<DialogScreenHandler> DIALOG = Registry.register(
+        BuiltInRegistries.MENU,
+        Identifier.fromNamespaceAndPath(ViaMercatorum.MOD_ID, "dialog"),
+        new MenuType<>(DialogScreenHandler::new, FeatureFlags.DEFAULT_FLAGS)
+    );
+
     public static void register() {
     }
 }

@@ -1,0 +1,14 @@
+{
+  "goal_id": "trade_expansion",
+  "name": "Ticaret Genislemesi",
+  "category": "TRADE",
+  "priority": 2.0,
+  "conditions": [
+    { "type": "population_above", "threshold": 20.0 },
+    { "type": "is_coastal" }
+  ],
+  "actions": [
+    { "type": "prioritize_trade" },
+    { "type": "increase_production", "target": "*", "intensity": 1.2 }
+  ]
+}

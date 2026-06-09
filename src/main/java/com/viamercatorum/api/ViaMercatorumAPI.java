@@ -33,5 +33,10 @@ public final class ViaMercatorumAPI {
     }
 
     public static void addReputation(UUID player, String villageId, double amount) {
+        ReputationSystem repSystem = MOD.getReputationSystem();
+        if (repSystem != null) {
+            repSystem.addGlobalReputation(player, amount);
+            repSystem.addVillageReputation(player, villageId, amount);
+        }
     }
 }

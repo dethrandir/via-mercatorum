@@ -17,6 +17,10 @@ public class Supply {
         stock = Math.min(maxCapacity, stock + productionRate);
     }
 
+    public void tickProductionWithModifier(double harvestModifier) {
+        stock = Math.min(maxCapacity, stock + productionRate * harvestModifier);
+    }
+
     public void consume(double amount) {
         stock = Math.max(0, stock - amount);
     }

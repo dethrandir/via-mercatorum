@@ -1,0 +1,22 @@
+{
+  "village_type": "TOWN",
+  "population_scale": 1.5,
+  "season_modifiers": {
+    "SPRING": 1.0,
+    "SUMMER": 0.9,
+    "AUTUMN": 1.1,
+    "WINTER": 1.3
+  },
+  "entries": [
+    { "category": "FOOD", "base_rate": 0.012 },
+    { "good_id": "iron_ingot", "base_rate": 0.004 },
+    { "good_id": "coal", "base_rate": 0.005 },
+    { "good_id": "oak_log", "base_rate": 0.004 },
+    { "good_id": "stone", "base_rate": 0.003 },
+    { "good_id": "leather", "base_rate": 0.002 },
+    { "good_id": "paper", "base_rate": 0.002 },
+    { "good_id": "book", "base_rate": 0.001 },
+    { "good_id": "iron_sword", "base_rate": 0.001 },
+    { "good_id": "iron_pickaxe", "base_rate": 0.001 }
+  ]
+}

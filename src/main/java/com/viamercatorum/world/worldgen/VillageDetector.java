@@ -1,6 +1,8 @@
 package com.viamercatorum.world.worldgen;
 
 import com.viamercatorum.ViaMercatorum;
+import com.viamercatorum.block.VillageHallBlockEntity;
+import com.viamercatorum.block.ModBlocks;
 import com.viamercatorum.core.economy.TradeGood;
 import com.viamercatorum.core.economy.TradeGoodRegistry;
 import com.viamercatorum.core.world.RouteGraph;
@@ -72,6 +74,24 @@ public class VillageDetector {
         graph.addVillage(node);
 
         connectNearbyVillages(node, graph);
+
+        assignVillageHall(world, center, nodeId);
+    }
+
+    private void assignVillageHall(ServerLevel world, BlockPos center, String villageId) {
+        int searchRadius = 32;
+        for (int dx = -searchRadius; dx <= searchRadius; dx += 3) {
+            for (int dz = -searchRadius; dz <= searchRadius; dz += 3) {
+                for (int dy = -8; dy <= 8; dy += 2) {
+                    BlockPos pos = center.offset(dx, dy, dz);
+                    if (world.getBlockEntity(pos) instanceof VillageHallBlockEntity be) {
+                        be.setVillageId(villageId);
+                        be.setChanged();
+                        return;
+                    }
+                }
+            }
+        }
     }
 
     private VillageNode.VillageType determineType(int pieceCount) {

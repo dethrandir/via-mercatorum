@@ -6,12 +6,12 @@ Bu modun çalışması için aşağıdaki `.png` dosyalarının ilgili dizinlere
 
 ## 1. GUI Texture
 
-| Dosya | `gui/market_stall.png` |
+| Dosya | `gui/village_hall.png` |
 |---|---|
 | **Klasör** | `src/main/resources/assets/viamercatorum/textures/gui/` |
 | **Boyut** | 256×256 pixel |
-| **Kullanım** | `MerchantScreen.java:15` — Market Stall bloğu ve kervan ticareti arayüzü arkaplanı |
-| **İçerik** | Üst kısımda başlık alanı, alt kısımda oyuncu envanteri, ortada ticaret listesi için boş alan. Vanilla villager GUI'sine benzer tarzda, kahverengi/beyaz tonlarda. |
+| **Kullanım** | `MerchantScreen.java:18` ve `VillageHallScreen.java:19` — Village Hall bloğu arayüzü arkaplanı |
+| **İçerik** | Üst kısımda başlık ve 6 sekme alanı, ortada sekme içerik alanı, alt kısımda oyuncu envanteri. Vanilla villager GUI'sine benzer tarzda, kahverengi/beyaz tonlarda. |
 
 ---
 
@@ -41,8 +41,17 @@ Bu modun çalışması için aşağıdaki `.png` dosyalarının ilgili dizinlere
 |---|---|
 | **Klasör** | `src/main/resources/assets/viamercatorum/textures/entity/` |
 | **Boyut** | 64×64 pixel |
-| **Kullanım** | `CaravanGuardEntityRenderer.java:11` (kodda tanımlı, henüz `getTextureLocation()` içinde dönmüyor) — Yaylı `CaravanGuardEntity` üzerinde |
+| **Kullanım** | `CaravanGuardEntityRenderer.java:11` — Yaylı `CaravanGuardEntity` üzerinde |
 | **İçerik** | Sırtında yay, daha hafif zırhlı villager skin. Yeşil/kahverengi kamuflaj tonlarında, izci görünümü. |
+
+### 2d. Karakter (Genel NPC)
+
+| Dosya | `entity/character.png` |
+|---|---|
+| **Klasör** | `src/main/resources/assets/viamercatorum/textures/entity/` |
+| **Boyut** | 64×64 pixel |
+| **Kullanım** | `CharacterEntityRenderer.java:11` — `CharacterEntity` (genel NPC) üzerinde |
+| **İçerik** | Humanoid mob skin. Vanilya player model kullanılır (kaftan/domat方向发展). Farklı karakter türleri için placeholder — ileride dynamic skin sistemi eklenecek. |
 
 ---
 
@@ -50,10 +59,11 @@ Bu modun çalışması için aşağıdaki `.png` dosyalarının ilgili dizinlere
 
 | # | Dosya | Boyut | Kullanıldığı Yer | Durum |
 |---|---|---|---|---|
-| 1 | `gui/market_stall.png` | 256×256 | Trade GUI arkaplanı | **EKLENECEK** |
+| 1 | `gui/village_hall.png` | 256×256 | Village Hall GUI arkaplanı | **EKLENECEK** |
 | 2 | `entity/caravan_trader.png` | 64×64 | Kervan tüccarı skin | **EKLENECEK** |
 | 3 | `entity/caravan_guard_sword.png` | 64×64 | Kılıçlı muhafız skin | **EKLENECEK** |
 | 4 | `entity/caravan_guard_bow.png` | 64×64 | Yaylı muhafız skin | **EKLENECEK** |
+| 5 | `entity/character.png` | 64×64 | Karakter NPC skin | **EKLENECEK** |
 
-> **Not:** Texture'lar 1.21.5 (26.1.2) ile uyumlu olmalıdır. Vanilla villager skin formatı kullanılır.
+> **Not:** Texture'lar 1.21.5 (26.1.2) ile uyumlu olmalıdır. Vanilla villager/player skin formatı kullanılır.
 > Tüm texture'lar `src/main/resources/assets/viamercatorum/textures/` altına konur.

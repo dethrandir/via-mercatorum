@@ -15,7 +15,7 @@ import net.minecraft.world.entity.player.Inventory;
 import java.util.List;
 
 public class MerchantScreen extends AbstractContainerScreen<MerchantScreenHandler> {
-    private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath("viamercatorum", "textures/gui/market_stall.png");
+    private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath("viamercatorum", "textures/gui/village_hall.png");
     private static final int ENTRY_HEIGHT = 20;
     private int scrollOffset = 0;
     private boolean isCaravan;

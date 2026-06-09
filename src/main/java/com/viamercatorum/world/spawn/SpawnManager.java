@@ -1,9 +1,12 @@
 package com.viamercatorum.world.spawn;
 
 import com.viamercatorum.ViaMercatorum;
+import com.viamercatorum.core.simulation.Character;
+import com.viamercatorum.core.simulation.CharacterManager;
 import com.viamercatorum.core.simulation.SimulationTick;
 import com.viamercatorum.core.world.Caravan;
 import com.viamercatorum.core.world.RouteGraph;
+import com.viamercatorum.core.world.TradeRoute;
 import com.viamercatorum.core.world.VillageNode;
 import com.viamercatorum.entity.*;
 import net.minecraft.core.BlockPos;
@@ -13,6 +16,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.camel.Camel;
 import net.minecraft.world.entity.animal.equine.*;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.Heightmap;
 
 import java.util.*;
@@ -42,6 +46,12 @@ public class SpawnManager {
             if (isCaravanInChunk(caravan, chunkX, chunkZ)) {
                 spawnCaravanEntities(world, caravan);
             }
+        }
+
+        RaidEventCache raidCache = simulationTick.getRaidEventCache();
+        List<RaidEventCache.CachedRaid> raids = raidCache.drainRaidsForChunk(chunkX, chunkZ, 3);
+        for (RaidEventCache.CachedRaid raid : raids) {
+            spawnRaidEntities(world, raid);
         }
     }
 
@@ -96,6 +106,33 @@ public class SpawnManager {
         }
     }
 
+    private void spawnRaidEntities(ServerLevel world, RaidEventCache.CachedRaid raid) {
+        int bx = raid.chunkX() * 16 + 8;
+        int bz = raid.chunkZ() * 16 + 8;
+        int surfaceY = world.getHeight(Heightmap.Types.WORLD_SURFACE, bx, bz);
+
+        Set<Entity> spawned = new HashSet<>();
+        Random rng = new Random(raid.gameTime());
+
+        for (int i = 0; i < raid.raiderCount(); i++) {
+            CaravanRaiderEntity raider = new CaravanRaiderEntity(ModEntities.CARAVAN_RAIDER, world);
+            raider.setVariant(i % 2 == 0 ? CaravanRaiderEntity.RaiderVariant.AXE : CaravanRaiderEntity.RaiderVariant.CROSSBOW);
+            double offsetX = (rng.nextDouble() - 0.5) * 10;
+            double offsetZ = (rng.nextDouble() - 0.5) * 10;
+            raider.setPos(bx + offsetX, surfaceY, bz + offsetZ);
+            world.addFreshEntity(raider);
+            spawned.add(raider);
+        }
+
+        if (raid.isCaravanRaid()) {
+            String key = "raid_c_" + raid.chunkX() + "," + raid.chunkZ();
+            activeCaravanEntities.put(key, spawned);
+        } else {
+            String key = "raid_v_" + raid.chunkX() + "," + raid.chunkZ();
+            activeVillageEntities.put(key, spawned);
+        }
+    }
+
     private boolean isInVillageRange(VillageNode village, int chunkX, int chunkZ) {
         int dx = Math.abs(village.getChunkX() - chunkX);
         int dz = Math.abs(village.getChunkZ() - chunkZ);
@@ -143,9 +180,34 @@ public class SpawnManager {
         }
 
         activeVillageEntities.put(key, spawned);
+
+        CharacterManager charManager = ViaMercatorum.getInstance().getCharacterManager();
+        if (charManager != null) {
+            charManager.ensureVillageCharacters(village);
+        }
+
+        spawnVillageCharacters(world, village, spawned);
     }
 
-    private void spawnCaravanEntities(ServerLevel world, Caravan caravan) {
+    private void spawnVillageCharacters(ServerLevel world, VillageNode village, Set<Entity> spawned) {
+        CharacterManager charManager = ViaMercatorum.getInstance().getCharacterManager();
+        if (charManager == null) return;
+
+        var characters = charManager.getCharactersByVillage(village.getId());
+        for (Character character : characters) {
+            BlockPos pos = findSpawnPos(world, village.getChunkX(), village.getChunkZ());
+            if (pos == null) continue;
+
+            CharacterEntity entity = new CharacterEntity(ModEntities.CHARACTER, world);
+            entity.setCharacterId(character.getId());
+            entity.setPos(pos.getX() + RandomSource.create().nextDouble() * 4 - 2, pos.getY(), pos.getZ() + RandomSource.create().nextDouble() * 4 - 2);
+            entity.setPersistenceRequired();
+            world.addFreshEntity(entity);
+            spawned.add(entity);
+        }
+    }
+
+private void spawnCaravanEntities(ServerLevel world, Caravan caravan) {
         VillageNode origin = caravan.getOriginNode();
         VillageNode dest = caravan.getDestinationNode();
         double progress = caravan.getProgress();
@@ -169,6 +231,18 @@ public class SpawnManager {
         leader.setPersistenceRequired();
         world.addFreshEntity(leader);
         spawned.add(leader);
+
+        CharacterManager charManager = ViaMercatorum.getInstance().getCharacterManager();
+        if (charManager != null) {
+            Character caravanLeader = charManager.createCaravanLeaderForCaravan(caravan.getId(), origin);
+            BlockPos spawnPos = new BlockPos((int) worldX, surfaceY, (int) worldZ);
+            CharacterEntity leaderChar = new CharacterEntity(ModEntities.CHARACTER, world);
+            leaderChar.setCharacterId(caravanLeader.getId());
+            leaderChar.setPos(worldX + 1, surfaceY, worldZ + 1);
+            leaderChar.setPersistenceRequired();
+            world.addFreshEntity(leaderChar);
+            spawned.add(leaderChar);
+        }
 
         Random rng = new Random(caravan.getId().hashCode());
 

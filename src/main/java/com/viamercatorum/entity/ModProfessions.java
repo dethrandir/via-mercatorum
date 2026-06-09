@@ -27,10 +27,10 @@ public class ModProfessions {
         MERCHANT_KEY,
         new VillagerProfession(
             Component.translatable("entity.viamercatorum.merchant"),
-            holder -> holder.value().equals(ModPOIs.MARKET_STALL),
-            holder -> holder.value().equals(ModPOIs.MARKET_STALL),
+            holder -> holder.value().equals(ModPOIs.VILLAGE_HALL),
+            holder -> holder.value().equals(ModPOIs.VILLAGE_HALL),
             ImmutableSet.of(),
-            ImmutableSet.of(ModBlocks.MARKET_STALL),
+            ImmutableSet.of(ModBlocks.VILLAGE_HALL),
             SoundEvents.VILLAGER_WORK_ARMORER,
             Int2ObjectMaps.emptyMap()
         )

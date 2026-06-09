@@ -1,7 +1,9 @@
 package com.viamercatorum.block;
 
+import com.viamercatorum.player.VillageHallScreenHandler;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
@@ -14,10 +16,10 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class MarketStallBlock extends BaseEntityBlock {
+public class VillageHallBlock extends BaseEntityBlock {
     private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 12, 16);
 
-    public MarketStallBlock() {
+    public VillageHallBlock() {
         super(Properties.of()
             .strength(2.0f)
             .noOcclusion()
@@ -26,7 +28,7 @@ public class MarketStallBlock extends BaseEntityBlock {
 
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
-        return simpleCodec(ignored -> new MarketStallBlock());
+        return simpleCodec(ignored -> new VillageHallBlock());
     }
 
     @Override
@@ -41,7 +43,7 @@ public class MarketStallBlock extends BaseEntityBlock {
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new MarketStallBlockEntity(pos, state);
+        return new VillageHallBlockEntity(pos, state);
     }
 
     @Override
@@ -49,8 +51,12 @@ public class MarketStallBlock extends BaseEntityBlock {
                                                 Player player, BlockHitResult hit) {
         if (!world.isClientSide()) {
             BlockEntity be = world.getBlockEntity(pos);
-            if (be instanceof MarketStallBlockEntity stall) {
-                player.openMenu(stall);
+            if (be instanceof VillageHallBlockEntity hall) {
+                player.openMenu(hall);
+                if (player instanceof ServerPlayer serverPlayer && player.containerMenu instanceof VillageHallScreenHandler handler) {
+                    handler.refreshData();
+                    handler.sendFullDataToClient(serverPlayer);
+                }
             }
         }
         return InteractionResult.SUCCESS;

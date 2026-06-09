@@ -1,0 +1,13 @@
+{
+  "goal_id": "food_security",
+  "name": "Gida Guvenligi",
+  "category": "FOOD_SECURITY",
+  "priority": 3.0,
+  "conditions": [
+    { "type": "food_ratio_below", "threshold": 0.4 }
+  ],
+  "actions": [
+    { "type": "increase_production", "target": "food", "intensity": 1.5 },
+    { "type": "demobilize" }
+  ]
+}

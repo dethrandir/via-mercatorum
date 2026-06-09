@@ -1,0 +1,18 @@
+{
+  "event_id": "gold_rush",
+  "name": "Gold Rush",
+  "scope": "VILLAGE",
+  "mean_time_to_happen": 100000,
+  "triggers": [
+    { "type": "village_is_coastal" },
+    { "type": "population_above", "threshold": 20.0 }
+  ],
+  "effects": [
+    { "type": "modify_production_rate", "target": "gold_ingot", "percentage": 0.5, "duration_ticks": 12000 },
+    { "type": "modify_demand", "target": "emerald", "percentage": 0.3, "duration_ticks": 12000 },
+    { "type": "change_reputation", "amount": 5.0 }
+  ],
+  "cooldown_ticks": 200000,
+  "weight": 0.5,
+  "repeatable": true
+}

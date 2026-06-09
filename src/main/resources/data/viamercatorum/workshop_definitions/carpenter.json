@@ -1,0 +1,22 @@
+{
+  "workshop_id": "carpenter",
+  "name": "Marangoz Atolyesi",
+  "input_goods": [
+    { "good_id": "oak_log", "amount": 3.0 }
+  ],
+  "output_goods": [
+    { "good_id": "paper", "amount": 1.0 },
+    { "good_id": "book", "amount": 0.3 }
+  ],
+  "construction_cost": [
+    { "good_id": "oak_log", "amount": 48.0 },
+    { "good_id": "stone", "amount": 16.0 }
+  ],
+  "emerald_construction_cost": 5.0,
+  "tick_cost_emerald": 0.0,
+  "production_tick_interval": 120,
+  "max_level": 3,
+  "upgrade_cost_multiplier": 1.8,
+  "max_stored_input": 180.0,
+  "max_accumulated_output": 180.0
+}

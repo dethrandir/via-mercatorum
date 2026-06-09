@@ -4,5 +4,8 @@
   "traffic_threshold": 300.0,
   "surface": { "block": "minecraft:stone_bricks", "slab": "minecraft:stone_brick_slab" },
   "foundation": { "block": "minecraft:stone" },
-  "width": 2
+  "width": 2,
+  "degradation_rate": 0.0002,
+  "degrade_to": "stone",
+  "maintenance_cost": 0.0025
 }

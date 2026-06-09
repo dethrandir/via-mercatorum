@@ -1,0 +1,14 @@
+{
+  "goal_id": "military_readiness",
+  "name": "Askeri Hazirlik",
+  "category": "MILITARY",
+  "priority": 2.5,
+  "conditions": [
+    { "type": "military_power_below", "threshold": 10.0 },
+    { "type": "food_ratio_above", "threshold": 0.5 }
+  ],
+  "actions": [
+    { "type": "build_workshop", "target": "smithy" },
+    { "type": "mobilize" }
+  ]
+}

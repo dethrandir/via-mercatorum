@@ -1,0 +1,14 @@
+{
+  "goal_id": "population_growth",
+  "name": "Nufus Artisi",
+  "category": "GROWTH",
+  "priority": 1.5,
+  "conditions": [
+    { "type": "population_below_max_ratio", "threshold": 0.5 },
+    { "type": "food_ratio_above", "threshold": 0.7 }
+  ],
+  "actions": [
+    { "type": "increase_production", "target": "food", "intensity": 1.3 },
+    { "type": "demobilize" }
+  ]
+}

@@ -1,5 +1,8 @@
 package com.viamercatorum.core.economy;
 
+import com.viamercatorum.core.world.RouteGraph;
+import com.viamercatorum.core.world.VillageNode;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -30,7 +33,23 @@ public class Market {
         }
     }
 
+    public void updateDemands(RouteGraph routeGraph) {
+        Map<String, Double> newDemands = new ConcurrentHashMap<>();
+        for (VillageNode village : routeGraph.getAllVillages()) {
+            for (var entry : village.getLastDemand().entrySet()) {
+                newDemands.merge(entry.getKey(), entry.getValue(), Double::sum);
+            }
+        }
+        for (var entry : newDemands.entrySet()) {
+            globalDemands.put(entry.getKey(), entry.getValue());
+        }
+    }
+
     public Map<String, Supply> getAllSupplies() {
         return globalSupplies;
+    }
+
+    public Map<String, Double> getAllDemands() {
+        return globalDemands;
     }
 }

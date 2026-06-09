@@ -1,0 +1,24 @@
+{
+  "workshop_id": "smithy",
+  "name": "Demirci Atolyesi",
+  "input_goods": [
+    { "good_id": "iron_ingot", "amount": 2.0 },
+    { "good_id": "coal", "amount": 1.0 }
+  ],
+  "output_goods": [
+    { "good_id": "iron_sword", "amount": 0.5 },
+    { "good_id": "iron_pickaxe", "amount": 0.5 }
+  ],
+  "construction_cost": [
+    { "good_id": "oak_log", "amount": 32.0 },
+    { "good_id": "stone", "amount": 64.0 },
+    { "good_id": "iron_ingot", "amount": 8.0 }
+  ],
+  "emerald_construction_cost": 8.0,
+  "tick_cost_emerald": 0.0,
+  "production_tick_interval": 100,
+  "max_level": 3,
+  "upgrade_cost_multiplier": 2.0,
+  "max_stored_input": 200.0,
+  "max_accumulated_output": 200.0
+}

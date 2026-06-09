@@ -1,0 +1,13 @@
+{
+  "goal_id": "industrialization",
+  "name": "Endüstrilesme",
+  "category": "PRODUCTION",
+  "priority": 1.0,
+  "conditions": [
+    { "type": "population_above", "threshold": 30.0 }
+  ],
+  "actions": [
+    { "type": "build_workshop", "target": "carpenter" },
+    { "type": "increase_production", "target": "raw_material", "intensity": 1.3 }
+  ]
+}

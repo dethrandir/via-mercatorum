@@ -5,5 +5,8 @@
   "surface": { "block": "minecraft:grass_path" },
   "foundation": { "block": "minecraft:dirt" },
   "width": 1,
-  "next_quality": "gravel"
+  "next_quality": "gravel",
+  "degradation_rate": 0.0005,
+  "degrade_to": null,
+  "maintenance_cost": 0.001
 }

@@ -1,0 +1,13 @@
+{
+  "goal_id": "road_security",
+  "name": "Yol Guvenligi",
+  "category": "ROAD_SECURITY",
+  "priority": 2.0,
+  "conditions": [
+    { "type": "piracy_above", "threshold": 0.4 }
+  ],
+  "actions": [
+    { "type": "mobilize" },
+    { "type": "improve_roads" }
+  ]
+}

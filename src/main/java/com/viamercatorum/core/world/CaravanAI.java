@@ -31,30 +31,62 @@ public class CaravanAI {
     }
 
     public static Map<String, Double> chooseCargo(VillageNode from, VillageNode to) {
-        var profitable = EconomyHelper.profitableGoods(from, to);
+        ViaMercatorumConfig config = ViaMercatorum.getInstance().getConfig();
         Map<String, Double> cargo = new HashMap<>();
-        double totalCapacity = 50.0;
-        double remaining = totalCapacity;
+        double remaining = config.caravan.cargoCapacity;
 
-        int count = Math.min(3, profitable.size());
-        for (int i = 0; i < count && remaining > 0; i++) {
-            var entry = profitable.get(i);
-            Supply supply = entry.getValue();
-            double amount = Math.min(supply.getStock() * 0.3, Math.min(remaining, 20.0));
+        Map<String, Double> destDemand = to.getLastDemand();
+        List<Map.Entry<String, Double>> demandGoods = new ArrayList<>();
+        for (var entry : destDemand.entrySet()) {
+            Supply fromSupply = from.getSupply(entry.getKey());
+            if (fromSupply == null) continue;
+            double stockRatio = fromSupply.getStock() / Math.max(1, fromSupply.getMaxCapacity());
+            if (stockRatio >= config.ai.minStockForExport) {
+                double priority = entry.getValue() * config.caravan.demandImportPriority;
+                demandGoods.add(Map.entry(entry.getKey(), priority));
+            }
+        }
+        demandGoods.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
+
+        int demandAdded = 0;
+        for (var entry : demandGoods) {
+            if (remaining <= 0 || demandAdded >= 3) break;
+            if (cargo.containsKey(entry.getKey())) continue;
+            Supply fromSupply = from.getSupply(entry.getKey());
+            double amount = Math.min(fromSupply.getStock() * config.caravan.exportFraction,
+                Math.min(remaining, config.caravan.maxPerGood));
             if (amount > 1) {
                 cargo.put(entry.getKey(), amount);
                 remaining -= amount;
+                demandAdded++;
+            }
+        }
+
+        if (remaining > 5) {
+            var profitable = EconomyHelper.profitableGoods(from, to,
+                config.economy.profitableGoodsFromThreshold, config.economy.profitableGoodsToThreshold);
+            int count = Math.min(3, profitable.size());
+            for (int i = 0; i < count && remaining > 0; i++) {
+                var entry = profitable.get(i);
+                if (cargo.containsKey(entry.getKey())) continue;
+                Supply supply = entry.getValue();
+                double amount = Math.min(supply.getStock() * config.caravan.exportFraction,
+                    Math.min(remaining, config.caravan.maxPerGood));
+                if (amount > 1) {
+                    cargo.put(entry.getKey(), amount);
+                    remaining -= amount;
+                }
             }
         }
 
         if (remaining > 5) {
             List<Map.Entry<String, Supply>> surplus = from.getSupplies().entrySet().stream()
                 .filter(e -> !cargo.containsKey(e.getKey())
-                    && e.getValue().getStock() / Math.max(1, e.getValue().getMaxCapacity()) > 0.5)
+                    && e.getValue().getStock() / Math.max(1, e.getValue().getMaxCapacity()) > config.caravan.surplusThreshold)
                 .collect(Collectors.toList());
             if (!surplus.isEmpty()) {
                 var extra = surplus.get(RNG.nextInt(surplus.size()));
-                double amount = Math.min(extra.getValue().getStock() * 0.2, remaining);
+                double amount = Math.min(extra.getValue().getStock() * config.caravan.surplusExportFraction, remaining);
                 if (amount > 1) {
                     cargo.put(extra.getKey(), amount);
                 }

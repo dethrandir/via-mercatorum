@@ -1,0 +1,16 @@
+{
+  "event_id": "bandit_camp",
+  "name": "Bandit Camp Established",
+  "scope": "REGION",
+  "mean_time_to_happen": 40000,
+  "triggers": [
+    { "type": "piracy_above", "threshold": 0.4 }
+  ],
+  "effects": [
+    { "type": "modify_piracy", "percentage": 0.2, "duration_ticks": 15000 },
+    { "type": "change_reputation", "amount": -3.0 }
+  ],
+  "cooldown_ticks": 120000,
+  "weight": 1.5,
+  "repeatable": true
+}

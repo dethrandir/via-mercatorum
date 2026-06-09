@@ -5,5 +5,8 @@
   "surface": { "block": "minecraft:cobblestone" },
   "foundation": { "block": "minecraft:stone" },
   "width": 2,
-  "next_quality": "paved"
+  "next_quality": "paved",
+  "degradation_rate": 0.0003,
+  "degrade_to": "gravel",
+  "maintenance_cost": 0.002
 }

@@ -1,0 +1,22 @@
+{
+  "workshop_id": "bakery",
+  "name": "Firin Atolyesi",
+  "input_goods": [
+    { "good_id": "wheat", "amount": 3.0 }
+  ],
+  "output_goods": [
+    { "good_id": "bread", "amount": 2.0 }
+  ],
+  "construction_cost": [
+    { "good_id": "oak_log", "amount": 16.0 },
+    { "good_id": "stone", "amount": 32.0 },
+    { "good_id": "coal", "amount": 8.0 }
+  ],
+  "emerald_construction_cost": 4.0,
+  "tick_cost_emerald": 0.0,
+  "production_tick_interval": 80,
+  "max_level": 3,
+  "upgrade_cost_multiplier": 1.5,
+  "max_stored_input": 150.0,
+  "max_accumulated_output": 150.0
+}

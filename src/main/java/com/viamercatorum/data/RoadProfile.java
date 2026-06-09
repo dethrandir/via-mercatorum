@@ -14,7 +14,10 @@ public record RoadProfile(
     SurfaceBlock foundation,
     int width,
     List<String> requiredBiomes,
-    Optional<String> nextQuality
+    Optional<String> nextQuality,
+    Optional<Double> degradationRate,
+    Optional<String> degradeTo,
+    Optional<Double> maintenanceCost
 ) {
     public record SurfaceBlock(String block, Optional<String> slab) {
         public static final Codec<SurfaceBlock> CODEC = RecordCodecBuilder.create(inst ->
@@ -34,7 +37,10 @@ public record RoadProfile(
             SurfaceBlock.CODEC.fieldOf("foundation").forGetter(RoadProfile::foundation),
             Codec.INT.optionalFieldOf("width", 1).forGetter(RoadProfile::width),
             Codec.STRING.listOf().optionalFieldOf("required_biomes", List.of()).forGetter(RoadProfile::requiredBiomes),
-            Codec.STRING.optionalFieldOf("next_quality").forGetter(RoadProfile::nextQuality)
+            Codec.STRING.optionalFieldOf("next_quality").forGetter(RoadProfile::nextQuality),
+            Codec.DOUBLE.optionalFieldOf("degradation_rate").forGetter(RoadProfile::degradationRate),
+            Codec.STRING.optionalFieldOf("degrade_to").forGetter(RoadProfile::degradeTo),
+            Codec.DOUBLE.optionalFieldOf("maintenance_cost").forGetter(RoadProfile::maintenanceCost)
         ).apply(inst, RoadProfile::new)
     );
 }

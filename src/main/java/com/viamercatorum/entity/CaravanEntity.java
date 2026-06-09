@@ -10,6 +10,8 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
@@ -34,6 +36,10 @@ public class CaravanEntity extends Villager {
     public String getCaravanId() { return caravanId; }
     public String getRouteId() { return routeId; }
 
+    public static AttributeSupplier.Builder createAttributes() {
+        return Villager.createAttributes();
+    }
+
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
@@ -52,7 +58,7 @@ public class CaravanEntity extends Villager {
         }
         player.openMenu(new SimpleMenuProvider(
             (syncId, inv, p) -> new MerchantScreenHandler(syncId, inv, caravanId, true),
-            Component.translatable("container.viamercatorum.market_stall")
+            Component.translatable("container.viamercatorum.caravan_trade")
         ));
         return InteractionResult.SUCCESS;
     }

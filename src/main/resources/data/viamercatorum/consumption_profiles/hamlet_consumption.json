@@ -1,0 +1,16 @@
+{
+  "village_type": "HAMLET",
+  "population_scale": 0.5,
+  "season_modifiers": {
+    "SPRING": 1.0,
+    "SUMMER": 0.8,
+    "AUTUMN": 1.0,
+    "WINTER": 1.4
+  },
+  "entries": [
+    { "category": "FOOD", "base_rate": 0.008 },
+    { "good_id": "coal", "base_rate": 0.001 },
+    { "good_id": "oak_log", "base_rate": 0.002 },
+    { "good_id": "stone", "base_rate": 0.001 }
+  ]
+}

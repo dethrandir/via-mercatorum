@@ -1,0 +1,18 @@
+{
+  "event_id": "plague",
+  "name": "Plague Outbreak",
+  "scope": "VILLAGE",
+  "mean_time_to_happen": 80000,
+  "triggers": [
+    { "type": "season_is", "value": "WINTER" },
+    { "type": "food_ratio_below", "threshold": 0.3 }
+  ],
+  "effects": [
+    { "type": "modify_supply_category", "target": "FOOD", "percentage": -0.4 },
+    { "type": "modify_population", "percentage": -0.15 },
+    { "type": "change_reputation", "amount": -5.0 }
+  ],
+  "cooldown_ticks": 200000,
+  "weight": 1.0,
+  "repeatable": true
+}
