@@ -1,0 +1,12 @@
+{
+  "village_type": "FORTIFIED",
+  "leader_type_id": "warlord",
+  "leadership_title": "Komutan",
+  "power_base": 40.0,
+  "wealth_base": 300.0,
+  "reputation_base": 30.0,
+  "can_mobilize": true,
+  "can_declare_war": true,
+  "can_trade_policy": false,
+  "quest_pool": ["fortified_border_patrol", "fortified_siege_prep", "fortified_prisoner_exchange"]
+}

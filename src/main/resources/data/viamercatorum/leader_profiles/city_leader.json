@@ -1,0 +1,12 @@
+{
+  "village_type": "CITY",
+  "leader_type_id": "merchant_lord",
+  "leadership_title": "Sehir Lordu",
+  "power_base": 50.0,
+  "wealth_base": 1000.0,
+  "reputation_base": 50.0,
+  "can_mobilize": true,
+  "can_declare_war": true,
+  "can_trade_policy": true,
+  "quest_pool": ["city_tax_collection", "city_defense", "city_rivalry", "city_expedition"]
+}

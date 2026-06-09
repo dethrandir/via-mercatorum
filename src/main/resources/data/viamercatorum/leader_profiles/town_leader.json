@@ -1,0 +1,12 @@
+{
+  "village_type": "TOWN",
+  "leader_type_id": "guild_master",
+  "leadership_title": "Belediye Baskani",
+  "power_base": 30.0,
+  "wealth_base": 500.0,
+  "reputation_base": 40.0,
+  "can_mobilize": true,
+  "can_declare_war": false,
+  "can_trade_policy": true,
+  "quest_pool": ["town_trade_route", "town_guild_dispute", "town_smuggling_ring"]
+}

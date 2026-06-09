@@ -1,0 +1,12 @@
+{
+  "village_type": "VILLAGE",
+  "leader_type_id": "village_elder",
+  "leadership_title": "Koy Muhtari",
+  "power_base": 15.0,
+  "wealth_base": 200.0,
+  "reputation_base": 25.0,
+  "can_mobilize": true,
+  "can_declare_war": false,
+  "can_trade_policy": true,
+  "quest_pool": ["village_supplies", "village_defense", "village_caravan_escort"]
+}

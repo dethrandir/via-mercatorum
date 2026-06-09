@@ -1,0 +1,12 @@
+{
+  "village_type": "HAMLET",
+  "leader_type_id": "village_elder",
+  "leadership_title": "Muhtar",
+  "power_base": 5.0,
+  "wealth_base": 50.0,
+  "reputation_base": 10.0,
+  "can_mobilize": false,
+  "can_declare_war": false,
+  "can_trade_policy": true,
+  "quest_pool": ["hamlet_food_aid", "hamlet_road_repair"]
+}
