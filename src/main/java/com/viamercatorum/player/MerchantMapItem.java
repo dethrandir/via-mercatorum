@@ -18,8 +18,8 @@ import java.util.function.Consumer;
 public class MerchantMapItem extends Item {
     private static final DecimalFormat DF = new DecimalFormat("#.##");
 
-    public MerchantMapItem() {
-        super(new Item.Properties().stacksTo(1));
+    public MerchantMapItem(Properties properties) {
+        super(properties.stacksTo(1));
     }
 
     @Override

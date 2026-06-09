@@ -19,8 +19,8 @@ import java.util.function.Consumer;
 public class DebtNoteItem extends Item {
     private static final DecimalFormat DF = new DecimalFormat("#.##");
 
-    public DebtNoteItem() {
-        super(new Item.Properties().stacksTo(1));
+    public DebtNoteItem(Properties properties) {
+        super(properties.stacksTo(1));
     }
 
     @Override

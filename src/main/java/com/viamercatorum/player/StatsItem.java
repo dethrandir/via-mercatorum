@@ -21,8 +21,8 @@ import net.minecraft.world.level.Level;
 import java.util.*;
 
 public class StatsItem extends Item {
-    public StatsItem() {
-        super(new Item.Properties());
+    public StatsItem(Properties properties) {
+        super(properties);
     }
 
     @Override

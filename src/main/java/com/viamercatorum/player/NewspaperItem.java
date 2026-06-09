@@ -15,8 +15,8 @@ import net.minecraft.world.level.Level;
 import java.util.function.Consumer;
 
 public class NewspaperItem extends Item {
-    public NewspaperItem() {
-        super(new Item.Properties().stacksTo(16));
+    public NewspaperItem(Properties properties) {
+        super(properties.stacksTo(16));
     }
 
     @Override

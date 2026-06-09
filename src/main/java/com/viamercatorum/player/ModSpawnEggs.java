@@ -7,6 +7,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
@@ -24,6 +25,7 @@ public class ModSpawnEggs {
     private static Item registerEgg(String name, EntityType<?> entityType) {
         Identifier id = Identifier.fromNamespaceAndPath(ViaMercatorum.MOD_ID, name);
         Item.Properties props = new Item.Properties()
+            .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), id))
             .component(DataComponents.ENTITY_DATA,
                 TypedEntityData.of(entityType, new CompoundTag()));
         Item item = new SpawnEggItem(props);
