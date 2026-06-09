@@ -84,6 +84,15 @@ Called on `onStructureStart(ServerLevel, StructureStart)`. Deduplicates by gener
 - Road qualities (speed multiplier, block type, width) defined in JSON
 - `core/` package has zero Minecraft imports — testable standalone
 
+## Git
+
+Her en azindan kucuk-orta degisiklikten sonra commit atilsin. Commit mesajlari convention:
+- `fix:` — bug fix or crash resolution
+- `feat:` — new feature
+- `chore:` — cleanup, wiring, integration, misc
+
+Ayni commit'e cok farkli alanlardan degisiklik koyma; mantiksal gruplara bol.
+
 ## References
 
 - `MIMARI.md` — full architecture document (Turkish)
